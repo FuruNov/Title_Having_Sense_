@@ -2,8 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NewBehaviourScript : MonoBehaviour
+public class Player : MonoBehaviour
 {
+    //基礎ステータス
+    [SerializeField] float move_speed;
+    [SerializeField] float attack;
+    [SerializeField] float defense;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +19,20 @@ public class NewBehaviourScript : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void Move()
+    {
+
+    }
+
+    void Find()
+    {
+
+    }
+
+    void Attack()
+    {
+
     }
 }
