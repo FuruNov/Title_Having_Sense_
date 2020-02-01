@@ -1,4 +1,7 @@
 <<<<<<< HEAD
+# Title_Having_Sense_
+=======
+<<<<<<< HEAD
 # Title_Having_Sense_## ストーリー・世界観
 - (説明) 
 
@@ -197,3 +200,4 @@
 =======
 # センスのあるタイトル
 >>>>>>> f3a06ebb7eb397431813fe9d8986fffee736cfd4
+>>>>>>> master
