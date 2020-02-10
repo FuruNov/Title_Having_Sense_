@@ -11,7 +11,7 @@ public class ShadowPlayer : MonoBehaviour
     [SerializeField] float defense;
 
     //周囲の照度の取得に使用
-    [SerializeField] LightSensor[] lightSensor = new LightSensor[4]; //0 ... 上,1 ... 左,2 ... 右,3 ... 下
+    [SerializeField] LightSensor[] lightSensor;
     
     //照度による移動制限の閾値
     [SerializeField] float move_limit_by_shadow;
@@ -19,7 +19,8 @@ public class ShadowPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        if(lightSensor == null)
+            lightSensor = new LightSensor[4]; //0 ... 上,1 ... 左,2 ... 右,3 ... 下
     }
 
     // Update is called once per frame
@@ -34,10 +35,10 @@ public class ShadowPlayer : MonoBehaviour
         var direction_x = 0f; var direction_y = 0f;
 
         //周りが暗いと移動不可
-        if (Input.GetKey(KeyCode.UpArrow) && lightSensor[0].lightValue >= move_limit_by_shadow) { direction_y = move_speed; }
-        else if (Input.GetKey(KeyCode.LeftArrow) && lightSensor[1].lightValue >= move_limit_by_shadow) { direction_x = -(move_speed); }
-        else if (Input.GetKey(KeyCode.RightArrow) && lightSensor[2].lightValue >= move_limit_by_shadow) { direction_x = move_speed; }
-        else if (Input.GetKey(KeyCode.DownArrow) && lightSensor[3].lightValue >= move_limit_by_shadow) { direction_y = -(move_speed); }
+        if (Input.GetKey(KeyCode.W) && lightSensor[0].lightValue >= move_limit_by_shadow) { direction_y = move_speed; }
+        else if (Input.GetKey(KeyCode.A) && lightSensor[1].lightValue >= move_limit_by_shadow) { direction_x = -(move_speed); }
+        else if (Input.GetKey(KeyCode.D) && lightSensor[2].lightValue >= move_limit_by_shadow) { direction_x = move_speed; }
+        else if (Input.GetKey(KeyCode.S) && lightSensor[3].lightValue >= move_limit_by_shadow) { direction_y = -(move_speed); }
         else { direction_x = 0f; direction_y = 0f; }
 
         //移動
@@ -55,8 +56,4 @@ public class ShadowPlayer : MonoBehaviour
 
     }
 
-    void Dead()
-    {
-        if (HP == 0) { }
-    }
 }

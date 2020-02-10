@@ -4,9 +4,9 @@ using System.Collections;
 // 照度を計算するスクリプト
 public class LightSensor : MonoBehaviour
 {
-    public Camera dispCamera;
+    [SerializeField] Camera dispCamera;
     private Texture2D targetTexture;
-
+    
     public float lightValue;
 
     // Use this for initialization
@@ -14,21 +14,31 @@ public class LightSensor : MonoBehaviour
     {
         var tex = dispCamera.targetTexture;
         targetTexture = new Texture2D(tex.width, tex.height, TextureFormat.ARGB32, false);
-
+        
         while (true)
         {
             // RenderTextureキャプチャ
             RenderTexture.active = dispCamera.targetTexture;
 
-            yield return new WaitForEndOfFrame();
+            WaitForEndOfFrame endOfFrame = new WaitForEndOfFrame();
+
+            yield return endOfFrame;
+
+            endOfFrame = null;
 
             targetTexture.ReadPixels(new Rect(0, 0, tex.width, tex.height), 0, 0);
             targetTexture.Apply();
 
-
             // 照度を取得する
             lightValue = GetLightValue(targetTexture);
         }
+        
+    }
+
+
+    void LateUpdate()
+    {
+        return;
     }
 
     // 画像全体の照度計算
@@ -43,6 +53,8 @@ public class LightSensor : MonoBehaviour
             avg += col;
         }
         avg /= cols.Length;
+
+        cols = null;
 
         // 照度計算
         return 0.299f * avg.r + 0.587f * avg.g + 0.114f * avg.b;
