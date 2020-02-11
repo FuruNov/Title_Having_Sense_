@@ -20,9 +20,10 @@ public class Door : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Player_direction_select")
+        if(other.gameObject.tag == "Player_find_direction_effect")
         {
             Instantiate(InstantiateGameObject,transform.position,Quaternion.identity);
+            Destroy(other);
             Destroy(this.gameObject);
         }
     }

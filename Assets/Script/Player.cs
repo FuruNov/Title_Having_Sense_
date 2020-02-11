@@ -11,8 +11,8 @@ public class Player : MonoBehaviour
     [SerializeField] float defense;
 
     //エフェクト
-    [SerializeField] GameObject attack_effect;
-    [SerializeField] GameObject direction_effect;
+    [SerializeField] GameObject find_direction_effect;
+    [SerializeField] GameObject useitem_effect;
 
     private float distance_every_grid = 0.813f;
 
@@ -26,21 +26,20 @@ public class Player : MonoBehaviour
     void Update()
     {
         Move();
-        Attack();
+        Find();
+        Useitem();
     }
 
     void Move()
     {
         Vector3 scale = transform.localScale;
 
-        //Vector3 position = transform.localPosition;
-
         //移動方向の指定
         var direction_x = 0f; var direction_y = 0f;
-        if (Input.GetKey(KeyCode.W)) {      direction_y =   move_speed;  scale.y = -0.08f;                   /*StartCoroutine(Effect_Outbreak(direction_effect, new Vector3(position.x, position.y + distance_every_grid, position.z), 5));*/ }
-        else if (Input.GetKey(KeyCode.S)) { direction_y = -(move_speed); scale.y =  0.08f;                   /*StartCoroutine(Effect_Outbreak(direction_effect, new Vector3(position.x, position.y - distance_every_grid, position.z), 5));*/ }
-        else if (Input.GetKey(KeyCode.A)) { direction_x = -(move_speed); scale.y =  0.08f; scale.x = -0.08f; /*StartCoroutine(Effect_Outbreak(direction_effect, new Vector3(position.x - distance_every_grid, position.y, position.z), 5));*/ }
-        else if (Input.GetKey(KeyCode.D)) { direction_x =   move_speed;  scale.y =  0.08f; scale.x =  0.08f; /*StartCoroutine(Effect_Outbreak(direction_effect, new Vector3(position.x + distance_every_grid, position.y ,                      position.z),5));*/}
+        if (Input.GetKey(KeyCode.W))      { direction_y =   move_speed;  scale.y = -0.08f;                   }
+        else if (Input.GetKey(KeyCode.S)) { direction_y = -(move_speed); scale.y =  0.08f;                   }
+        else if (Input.GetKey(KeyCode.A)) { direction_x = -(move_speed); scale.y =  0.08f; scale.x = -0.08f; }
+        else if (Input.GetKey(KeyCode.D)) { direction_x =   move_speed;  scale.y =  0.08f; scale.x =  0.08f; }
         else { direction_x = 0f; direction_y = 0f; }
         //回転角の代入
         transform.localScale = scale; 
@@ -50,30 +49,41 @@ public class Player : MonoBehaviour
         transform.Translate(velocity);
     }
 
-    void Find()
-    {
-
-    }
-
-    void Attack()
+    void Useitem()
     {
         Vector3 scale = transform.localScale;
         Vector3 position = transform.localPosition;
-        float continue_time = 3f;
-        //スクリプトの方向転換
-        //向いた方向にエフェクト生成
-        if      (Input.GetKeyDown(KeyCode.UpArrow))    { scale.y = -0.08f;                   StartCoroutine(Effect_Outbreak(attack_effect, new Vector3(position.x ,                      position.y + distance_every_grid, position.z),continue_time)); }
-        else if (Input.GetKeyDown(KeyCode.DownArrow))  { scale.y =  0.08f;                   StartCoroutine(Effect_Outbreak(attack_effect, new Vector3(position.x ,                      position.y - distance_every_grid, position.z),continue_time)); }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))  { scale.y =  0.08f; scale.x = -0.08f; StartCoroutine(Effect_Outbreak(attack_effect, new Vector3(position.x - distance_every_grid, position.y ,                      position.z),continue_time)); }
-        else if (Input.GetKeyDown(KeyCode.RightArrow)) { scale.y =  0.08f; scale.x =  0.08f; StartCoroutine(Effect_Outbreak(attack_effect, new Vector3(position.x + distance_every_grid, position.y ,                      position.z),continue_time)); }
-        
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow))         { scale.y = -0.08f;                   StartCoroutine(Effect_Outbreak(useitem_effect, new Vector3(position.x, position.y + distance_every_grid, position.z), 5)); }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))  { scale.y =  0.08f;                   StartCoroutine(Effect_Outbreak(useitem_effect, new Vector3(position.x, position.y - distance_every_grid, position.z), 5)); }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))  { scale.y =  0.08f; scale.x = -0.08f; StartCoroutine(Effect_Outbreak(useitem_effect, new Vector3(position.x - distance_every_grid, position.y, position.z), 5)); }
+            else if (Input.GetKeyDown(KeyCode.RightArrow)) { scale.y =  0.08f; scale.x =  0.08f; StartCoroutine(Effect_Outbreak(useitem_effect, new Vector3(position.x + distance_every_grid, position.y ,position.z), 5)); }
+        }
+
         //回転角の代入
         transform.localScale = scale;
     }
 
-    void Dead()
+    void Find()
     {
-
+        Vector3 scale = transform.localScale;
+        Vector3 position = transform.localPosition;
+        float continue_time = 3f;
+        
+        //スクリプトの方向転換
+        //向いた方向にエフェクト生成
+        if (!Input.GetKey(KeyCode.LeftShift))
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow))         { scale.y = -0.08f;                   StartCoroutine(Effect_Outbreak(find_direction_effect, new Vector3(position.x, position.y + distance_every_grid, position.z), continue_time)); }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))  { scale.y =  0.08f;                   StartCoroutine(Effect_Outbreak(find_direction_effect, new Vector3(position.x, position.y - distance_every_grid, position.z), continue_time)); }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))  { scale.y =  0.08f; scale.x = -0.08f; StartCoroutine(Effect_Outbreak(find_direction_effect, new Vector3(position.x - distance_every_grid, position.y, position.z), continue_time)); }
+            else if (Input.GetKeyDown(KeyCode.RightArrow)) { scale.y =  0.08f; scale.x =  0.08f; StartCoroutine(Effect_Outbreak(find_direction_effect, new Vector3(position.x + distance_every_grid, position.y, position.z), continue_time)); }
+        }
+        
+        //回転角の代入
+        transform.localScale = scale;
     }
 
     //生成したEffectを持っておくためのList

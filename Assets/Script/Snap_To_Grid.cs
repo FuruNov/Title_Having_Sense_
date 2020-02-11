@@ -41,37 +41,37 @@ namespace Hexat.Editor
             get
             {
                 var v = new Vector3(
-                    ((int)_horizontalPivot + 1) / 2f,
-                    ((int)_verticalPivot + 1) / 2f,
+                    ((int)_horizontalPivot + 0.813f) / 2f,
+                    ((int)_verticalPivot + 0.813f) / 2f,
                     0
                 );
-                return new Vector3(minX, minY, 0) + Vector3.Scale(new Vector3(width, height, 0), v);
+                return new Vector3(MinX, MinY, 0) + Vector3.Scale(new Vector3(width, height, 0), v);
             }
         }
 
-        private Bounds bounds
+        private Bounds Bounds
         {
             get { return _renderer.bounds; }
         }
 
-        private float minX
+        private float MinX
         {
             get
             {
                 switch (_horizontalPivot)
                 {
                     case HorizontalPivot.Left:
-                        return bounds.min.x + offset.x;
+                        return Bounds.min.x + offset.x;
                     case HorizontalPivot.Middle:
-                        return bounds.center.x - (cellSize.x * width) / 2 + offset.x;
+                        return Bounds.center.x - (cellSize.x * width) / 2 + offset.x;
                     case HorizontalPivot.Right:
-                        return bounds.max.x - cellSize.x * width + offset.x;
+                        return Bounds.max.x - cellSize.x * width + offset.x;
                 }
                 return 0;
             }
         }
 
-        private float minY
+        private float MinY
         {
             get
             {
@@ -79,11 +79,11 @@ namespace Hexat.Editor
                 switch (_verticalPivot)
                 {
                     case VerticalPivot.Top:
-                        return bounds.max.y - cellSize.y * height + offset.y;
+                        return Bounds.max.y - cellSize.y * height + offset.y;
                     case VerticalPivot.Midle:
-                        return bounds.center.y - (cellSize.y * height) / 2 + offset.y;
+                        return Bounds.center.y - (cellSize.y * height) / 2 + offset.y;
                     case VerticalPivot.Bottom:
-                        return bounds.min.y + offset.y;
+                        return Bounds.min.y + offset.y;
                 }
                 return 0;
             }
@@ -91,8 +91,8 @@ namespace Hexat.Editor
 
         private void DoSnap()
         {
-            var x = minX + cellSize.x * width;
-            var y = minY + cellSize.y * height;
+            var x = MinX + cellSize.x * width;
+            var y = MinY + cellSize.y * height;
             var x0 = Mathf.Floor(center.x + cellSize.x * (int)(x / cellSize.x));
             if (isOdd) x0 -= cellSize.x / 2;
             var y0 = Mathf.Floor(center.y + cellSize.y * (int)(y / cellSize.y));
@@ -119,8 +119,8 @@ namespace Hexat.Editor
             {
                 for (var j = 0; j < height; j++)
                 {
-                    var l = minX + i * cellSize.x;
-                    var t = minY + j * cellSize.y;
+                    var l = MinX + i * cellSize.x;
+                    var t = MinY + j * cellSize.y;
                     var r = l + cellSize.x;
                     var b = t + cellSize.y;
                     DrawQuad(l, t, r, b);

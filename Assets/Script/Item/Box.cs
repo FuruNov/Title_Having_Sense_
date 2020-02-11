@@ -19,15 +19,16 @@ public class Box : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Player_direction_select")
+        if (other.gameObject.tag == "Player_find_direction_effect")
         {
             Vector3 position = transform.position;
-            if(Input.GetKey(KeyCode.UpArrow)) { position.y += distance_every_grid; }
-            else if (Input.GetKey(KeyCode.DownArrow)) { position.y -= distance_every_grid; }
-            else if (Input.GetKey(KeyCode.LeftArrow)) { position.x -= distance_every_grid; }
+            if(Input.GetKey(KeyCode.UpArrow))          { position.y += distance_every_grid; }
+            else if (Input.GetKey(KeyCode.DownArrow))  { position.y -= distance_every_grid; }
+            else if (Input.GetKey(KeyCode.LeftArrow))  { position.x -= distance_every_grid; }
             else if (Input.GetKey(KeyCode.RightArrow)) { position.x += distance_every_grid; }
 
             transform.position = position;
+            Destroy(other);
         }
     }
 }
