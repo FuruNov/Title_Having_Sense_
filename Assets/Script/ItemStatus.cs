@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
 [System.Serializable]//この属性を使ってインスペクター上で表示
 public class ItemStatus : MonoBehaviour
 {
@@ -28,6 +27,7 @@ public class ItemStatus : MonoBehaviour
     public enum ItemType
     {
         Weapon,
+        Armor,
         Consumable,
         Quest
     }

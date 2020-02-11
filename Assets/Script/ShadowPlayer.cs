@@ -35,10 +35,10 @@ public class ShadowPlayer : MonoBehaviour
         var direction_x = 0f; var direction_y = 0f;
 
         //周りが暗いと移動不可
-        if (Input.GetKey(KeyCode.W) && lightSensor[0].lightValue >= move_limit_by_shadow) { direction_y = move_speed; }
-        else if (Input.GetKey(KeyCode.A) && lightSensor[1].lightValue >= move_limit_by_shadow) { direction_x = -(move_speed); }
-        else if (Input.GetKey(KeyCode.D) && lightSensor[2].lightValue >= move_limit_by_shadow) { direction_x = move_speed; }
-        else if (Input.GetKey(KeyCode.S) && lightSensor[3].lightValue >= move_limit_by_shadow) { direction_y = -(move_speed); }
+        if (Input.GetKey(KeyCode.W) /* && lightSensor[0].lightValue >= move_limit_by_shadow */) { direction_y = move_speed; }
+        else if (Input.GetKey(KeyCode.A) /* && lightSensor[1].lightValue >= move_limit_by_shadow */) { direction_x = -(move_speed); }
+        else if (Input.GetKey(KeyCode.D) /* && lightSensor[2].lightValue >= move_limit_by_shadow */) { direction_x = move_speed; }
+        else if (Input.GetKey(KeyCode.S) /* && lightSensor[3].lightValue >= move_limit_by_shadow) */) { direction_y = -(move_speed); }
         else { direction_x = 0f; direction_y = 0f; }
 
         //移動
