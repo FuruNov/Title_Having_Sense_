@@ -1,25 +1,28 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     //基礎ステータス
-    [SerializeField] float move_speed;
-    [SerializeField] float HP;
-    [SerializeField] float attack;
-    [SerializeField] float defense;
+    [SerializeField] private float move_speed;
+    [SerializeField] private int HP;
+    private int Max_HP;
+    [SerializeField] private float attack;
+    [SerializeField] private float defense;
 
     //エフェクト
-    [SerializeField] GameObject find_direction_effect;
-    [SerializeField] GameObject useitem_effect;
+    [SerializeField] private GameObject find_direction_effect;
+    [SerializeField] private GameObject useitem_effect;
 
     private float distance_every_grid = 0.813f;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Max_HP = HP;
     }
 
     // Update is called once per frame
@@ -49,22 +52,7 @@ public class Player : MonoBehaviour
         transform.Translate(velocity);
     }
 
-    void Useitem()
-    {
-        Vector3 scale = transform.localScale;
-        Vector3 position = transform.localPosition;
-
-        if (Input.GetKey(KeyCode.LeftShift))
-        {
-            if (Input.GetKeyDown(KeyCode.UpArrow))         { scale.y = -0.08f;                   StartCoroutine(Effect_Outbreak(useitem_effect, new Vector3(position.x, position.y + distance_every_grid, position.z), 5)); }
-            else if (Input.GetKeyDown(KeyCode.DownArrow))  { scale.y =  0.08f;                   StartCoroutine(Effect_Outbreak(useitem_effect, new Vector3(position.x, position.y - distance_every_grid, position.z), 5)); }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow))  { scale.y =  0.08f; scale.x = -0.08f; StartCoroutine(Effect_Outbreak(useitem_effect, new Vector3(position.x - distance_every_grid, position.y, position.z), 5)); }
-            else if (Input.GetKeyDown(KeyCode.RightArrow)) { scale.y =  0.08f; scale.x =  0.08f; StartCoroutine(Effect_Outbreak(useitem_effect, new Vector3(position.x + distance_every_grid, position.y ,position.z), 5)); }
-        }
-
-        //回転角の代入
-        transform.localScale = scale;
-    }
+    
 
     void Find()
     {
@@ -82,6 +70,23 @@ public class Player : MonoBehaviour
             else if (Input.GetKeyDown(KeyCode.RightArrow)) { scale.y =  0.08f; scale.x =  0.08f; StartCoroutine(Effect_Outbreak(find_direction_effect, new Vector3(position.x + distance_every_grid, position.y, position.z), continue_time)); }
         }
         
+        //回転角の代入
+        transform.localScale = scale;
+    }
+
+    void Useitem()
+    {
+        Vector3 scale = transform.localScale;
+        Vector3 position = transform.localPosition;
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            if (Input.GetKeyDown(KeyCode.UpArrow))         { scale.y = -0.08f;                   StartCoroutine(Effect_Outbreak(useitem_effect, new Vector3(position.x, position.y + distance_every_grid, position.z), 5)); }
+            else if (Input.GetKeyDown(KeyCode.DownArrow))  { scale.y =  0.08f;                   StartCoroutine(Effect_Outbreak(useitem_effect, new Vector3(position.x, position.y - distance_every_grid, position.z), 5)); }
+            else if (Input.GetKeyDown(KeyCode.LeftArrow))  { scale.y =  0.08f; scale.x = -0.08f; StartCoroutine(Effect_Outbreak(useitem_effect, new Vector3(position.x - distance_every_grid, position.y, position.z), 5)); }
+            else if (Input.GetKeyDown(KeyCode.RightArrow)) { scale.y =  0.08f; scale.x =  0.08f; StartCoroutine(Effect_Outbreak(useitem_effect, new Vector3(position.x + distance_every_grid, position.y ,position.z), 5)); }
+        }
+
         //回転角の代入
         transform.localScale = scale;
     }
@@ -111,4 +116,7 @@ public class Player : MonoBehaviour
 
         StopCoroutine(Effect_Outbreak(effect,vector3,outbreak_time));
     }
+
+    public int getHP() { return HP; }
+    public int getMax_HP() { return Max_HP; }
 }
