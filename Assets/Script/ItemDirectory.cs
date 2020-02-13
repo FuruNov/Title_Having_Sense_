@@ -78,7 +78,6 @@ public class ItemDirectory : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this);
         Sorting();
     }
 
@@ -107,18 +106,20 @@ public class ItemDirectory : MonoBehaviour
             }
         }
         
+        //-------------------------------------------------
+
         //武器をステータスごとに降順ソート
         foreach (ItemStatus wp in Weapon)
         {
             WeaponPower.Add(wp);
             WeaponPower.Sort((a, b) => b.GetPower() - a.GetPower());
+
             WeaponDefense.Add(wp);
             WeaponDefense.Sort((a, b) => b.GetDefense() - a.GetDefense());
+
             WeaponWeight.Add(wp);
             WeaponWeight.Sort((a, b) => b.GetWeight() - a.GetWeight());
         }
-
-        //-------------------------------------------------
 
         //武器種ごとにステータスでソート        
         foreach (ItemStatus wp in Weapon)
@@ -176,8 +177,10 @@ public class ItemDirectory : MonoBehaviour
         {
             ArmorPower.Add(ar);
             ArmorPower.Sort((a, b) => b.GetPower() - a.GetPower());
+
             ArmorDefense.Add(ar);
             ArmorDefense.Sort((a, b) => b.GetDefense() - a.GetDefense());
+
             ArmorWeight.Add(ar);
             ArmorWeight.Sort((a, b) => b.GetWeight() - a.GetWeight());
         }

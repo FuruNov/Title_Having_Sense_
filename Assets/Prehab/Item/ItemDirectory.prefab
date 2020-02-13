@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6501563516750720808}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.0147777, y: -1.0986093, z: -1.1911283}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -55,18 +55,41 @@ MonoBehaviour:
   - {fileID: 6772907667133462999, guid: 78e4715ea00be7a41bffa9c3e2b7e927, type: 3}
   - {fileID: 3982068077518375837, guid: 4a126d087be75324fa1588b0b50212fd, type: 3}
   Weapon: []
+  WeaponPower: []
+  WeaponDefense: []
+  WeaponWeight: []
   Sword: []
+  SwordPower: []
+  SwordDefense: []
+  SwordWeight: []
   Spear: []
+  SpearPower: []
+  SpearDefense: []
+  SpearWeight: []
   Axe: []
+  AxePower: []
+  AxeDefense: []
+  AxeWeight: []
   Bow: []
+  BowPower: []
+  BowDefense: []
+  BowWeight: []
   Armor: []
+  ArmorPower: []
+  ArmorDefense: []
+  ArmorWeight: []
   Head: []
+  HeadPower: []
+  HeadDefense: []
+  HeadWeight: []
   Body: []
+  BodyPower: []
+  BodyDefense: []
+  BodyWeight: []
   Leg: []
-  Power: []
-  Defense: []
-  Weight: []
-  AttackSpeed: []
+  LegPower: []
+  LegDefense: []
+  LegWeight: []
   Consumable: []
   Quest: []
   Field: []

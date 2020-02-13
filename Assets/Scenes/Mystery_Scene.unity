@@ -1559,6 +1559,40 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 719435376}
   m_CullTransparentMesh: 0
+--- !u!1001 &732931789
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6501563516750720808, guid: 1a0462c7a4506544b9ded862a5fe8b97,
+        type: 3}
+      propertyPath: m_Name
+      value: ItemDirectory
+      objectReference: {fileID: 0}
+    - target: {fileID: 7988607281725423649, guid: 1a0462c7a4506544b9ded862a5fe8b97,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7988607281725423649, guid: 1a0462c7a4506544b9ded862a5fe8b97,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7988607281725423649, guid: 1a0462c7a4506544b9ded862a5fe8b97,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7988607281725423649, guid: 1a0462c7a4506544b9ded862a5fe8b97,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1a0462c7a4506544b9ded862a5fe8b97, type: 3}
 --- !u!1 &760592890
 GameObject:
   m_ObjectHideFlags: 0
@@ -2431,6 +2465,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 875865962}
   m_CullTransparentMesh: 0
+--- !u!114 &878550009 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2885166190366820149, guid: 1a0462c7a4506544b9ded862a5fe8b97,
+    type: 3}
+  m_PrefabInstance: {fileID: 732931789}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e67635f06bd27a04695b5b1cad94b4d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &901866041
 GameObject:
   m_ObjectHideFlags: 0
@@ -4169,6 +4215,7 @@ GameObject:
   - component: {fileID: 1658838278}
   - component: {fileID: 1658838279}
   - component: {fileID: 1658838280}
+  - component: {fileID: 1658838282}
   - component: {fileID: 1658838281}
   m_Layer: 0
   m_Name: Player
@@ -4355,6 +4402,20 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1658838274}
   m_Enabled: 1
+--- !u!114 &1658838282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658838274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b502bb65f25fb7c44a263801a65ee0fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemDirectory: {fileID: 878550009}
+  player: {fileID: 1658838278}
 --- !u!1 &1725649531
 GameObject:
   m_ObjectHideFlags: 0

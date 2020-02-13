@@ -5,6 +5,8 @@ using UnityEngine;
 public class Having_Itemlist : MonoBehaviour
 {
     [SerializeField] private ItemDirectory itemDirectory;
+    [SerializeField] private Player player;
+    
     // Start is called before the first frame update
     void Start()
     {
