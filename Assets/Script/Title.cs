@@ -1,24 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Having_Itemlist : MonoBehaviour
+public class Title : MonoBehaviour
 {
-    [SerializeField] private ItemDirectory itemDirectory;
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (SceneManager.GetActiveScene().name == "Title_Scene")
+            SceneManager.LoadScene("Mystery_Scene");
     }
 
     // Update is called once per frame
     void Update()
     {
         
-    }
-
-    void Sorting()
-    {
-
     }
 }

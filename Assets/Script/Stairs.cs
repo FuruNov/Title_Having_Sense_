@@ -26,7 +26,7 @@ public class Stairs : MonoBehaviour
                 SceneManager.LoadScene("Battle_Scene");
 
             if (SceneManager.GetActiveScene().name == "Battle_Scene")
-                SceneManager.LoadScene("Mystery_Scene");
+                SceneManager.LoadScene("Title_Scene");
         }
     }
 }
