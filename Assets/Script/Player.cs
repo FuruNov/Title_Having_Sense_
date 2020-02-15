@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
 
     //その他
     private float distance_every_grid = 0.813f;
-    [SerializeField] private Having_Itemlist itemlist;
+    [SerializeField] private HavingItemList itemlist;
 
     // Start is called before the first frame update
     void Start()

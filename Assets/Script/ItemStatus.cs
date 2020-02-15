@@ -4,17 +4,17 @@ using UnityEngine.UI;
 
 public class ItemStatus : MonoBehaviour
 {
-    [SerializeField] private string itemName;        //名前
-    [SerializeField] private int itemID;             //アイテムID
-    [SerializeField] private string itemDesc;        //アイテムの説明文
-    [SerializeField] private Texture2D itemIcon;     //アイコン
-    [SerializeField] private Image itemImageUI;      //UI用
-    [SerializeField] private int itemPower;          //攻撃力
-    [SerializeField] private int itemDefense;        //防御力
+    [SerializeField] private string itemName;       //名前
+    [SerializeField] private int itemID;            //アイテムID
+    [SerializeField] private string itemDesc;       //アイテムの説明文
+    [SerializeField] private Texture2D itemIcon;    //アイコン
+    [SerializeField] private Image itemImageUI;     //UI用
+    [SerializeField] private int itemPower;         //攻撃力
+    [SerializeField] private int itemDefense;       //防御力
     [SerializeField] private int itemWeight;        //重さ
-    [SerializeField] private int HavingLimit;    //攻撃速度
-    [SerializeField] private ItemType itemType;      //アイテムの種類
-    [SerializeField] private SubItemType subitemType;
+    [SerializeField] private int HavingLimit;       //所持制限
+    [SerializeField] private ItemType itemType;
+    [SerializeField] private SubItemType subitemType; 
 
     //アイテムタイプも同じくenum      
     public enum ItemType
@@ -60,7 +60,7 @@ public class ItemStatus : MonoBehaviour
     public int GetPower() { return itemPower; }
     public int GetDefense() { return itemDefense; }
     public int GetWeight() { return itemWeight; }
-    public int GetSpeed() { return HavingLimit; }
+    public int GetHavingLimit() { return HavingLimit; }
     public ItemType GetItemType() { return itemType; }
     public SubItemType GetSubItemType() { return subitemType; }
 }

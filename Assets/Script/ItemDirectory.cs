@@ -6,92 +6,96 @@ public class ItemDirectory : MonoBehaviour
 {
     //ソート用のList
     [SerializeField] List<ItemStatus> item = new List<ItemStatus>();
-    
-/*0*/    
+
+    /*0*/
     [SerializeField] List<ItemStatus> Weapon;
     /*1*/
-        [SerializeField] List<ItemStatus> WeaponPower;
-        [SerializeField] List<ItemStatus> WeaponDefense;
-        [SerializeField] List<ItemStatus> WeaponWeight;
+    [SerializeField] List<ItemStatus> WeaponPower;
+    [SerializeField] List<ItemStatus> WeaponDefense;
+    [SerializeField] List<ItemStatus> WeaponWeight;
 
     /*1*/
-        [SerializeField] List<ItemStatus> Sword;
-        /*2*/
-            [SerializeField] List<ItemStatus> SwordPower;
-            [SerializeField] List<ItemStatus> SwordDefense;
-            [SerializeField] List<ItemStatus> SwordWeight;
+    [SerializeField] List<ItemStatus> Sword;
+    /*2*/
+    [SerializeField] List<ItemStatus> SwordPower;
+    [SerializeField] List<ItemStatus> SwordDefense;
+    [SerializeField] List<ItemStatus> SwordWeight;
 
     /*1*/
-        [SerializeField] List<ItemStatus> Spear;
-        /*2*/
-            [SerializeField] List<ItemStatus> SpearPower;
-            [SerializeField] List<ItemStatus> SpearDefense;
-            [SerializeField] List<ItemStatus> SpearWeight;
+    [SerializeField] List<ItemStatus> Spear;
+    /*2*/
+    [SerializeField] List<ItemStatus> SpearPower;
+    [SerializeField] List<ItemStatus> SpearDefense;
+    [SerializeField] List<ItemStatus> SpearWeight;
 
     /*1*/
-        [SerializeField] List<ItemStatus> Axe;
-        /*2*/
-            [SerializeField] List<ItemStatus> AxePower;
-            [SerializeField] List<ItemStatus> AxeDefense;
-            [SerializeField] List<ItemStatus> AxeWeight;
+    [SerializeField] List<ItemStatus> Axe;
+    /*2*/
+    [SerializeField] List<ItemStatus> AxePower;
+    [SerializeField] List<ItemStatus> AxeDefense;
+    [SerializeField] List<ItemStatus> AxeWeight;
 
     /*1*/
-        [SerializeField] List<ItemStatus> Bow;
-        /*2*/
-            [SerializeField] List<ItemStatus> BowPower;
-            [SerializeField] List<ItemStatus> BowDefense;
-            [SerializeField] List<ItemStatus> BowWeight;
+    [SerializeField] List<ItemStatus> Bow;
+    /*2*/
+    [SerializeField] List<ItemStatus> BowPower;
+    [SerializeField] List<ItemStatus> BowDefense;
+    [SerializeField] List<ItemStatus> BowWeight;
 
-/*0*/
+    /*0*/
     [SerializeField] List<ItemStatus> Armor;
 
     /*1*/
-        [SerializeField] List<ItemStatus> ArmorPower;
-        [SerializeField] List<ItemStatus> ArmorDefense;
-        [SerializeField] List<ItemStatus> ArmorWeight;
+    [SerializeField] List<ItemStatus> ArmorPower;
+    [SerializeField] List<ItemStatus> ArmorDefense;
+    [SerializeField] List<ItemStatus> ArmorWeight;
 
     /*1*/
-        [SerializeField] List<ItemStatus> Head;
-        /*2*/
-            [SerializeField] List<ItemStatus> HeadPower;
-            [SerializeField] List<ItemStatus> HeadDefense;
-            [SerializeField] List<ItemStatus> HeadWeight;
+    [SerializeField] List<ItemStatus> Head;
+    /*2*/
+    [SerializeField] List<ItemStatus> HeadPower;
+    [SerializeField] List<ItemStatus> HeadDefense;
+    [SerializeField] List<ItemStatus> HeadWeight;
 
     /*1*/
-        [SerializeField] List<ItemStatus> Body;
-        /*2*/
-            [SerializeField] List<ItemStatus> BodyPower;
-            [SerializeField] List<ItemStatus> BodyDefense;
-            [SerializeField] List<ItemStatus> BodyWeight;
+    [SerializeField] List<ItemStatus> Body;
+    /*2*/
+    [SerializeField] List<ItemStatus> BodyPower;
+    [SerializeField] List<ItemStatus> BodyDefense;
+    [SerializeField] List<ItemStatus> BodyWeight;
 
     /*1*/
-        [SerializeField] List<ItemStatus> Leg;
-        /*2*/
-            [SerializeField] List<ItemStatus> LegPower;
-            [SerializeField] List<ItemStatus> LegDefense;
-            [SerializeField] List<ItemStatus> LegWeight;
+    [SerializeField] List<ItemStatus> Leg;
+    /*2*/
+    [SerializeField] List<ItemStatus> LegPower;
+    [SerializeField] List<ItemStatus> LegDefense;
+    [SerializeField] List<ItemStatus> LegWeight;
 
-/*0*/    [SerializeField] List<ItemStatus> Consumable;
-         [SerializeField] List<ItemStatus> Quest;
-         [SerializeField] List<ItemStatus> Field;
+    /*0*/
+    [SerializeField] List<ItemStatus> Consumable;
+    [SerializeField] List<ItemStatus> Quest;
+    [SerializeField] List<ItemStatus> Field;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        Sorting();
-    }
+    void Start() { Sorting(); }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void Sorting()
     {
-        
+
         //IDの昇順にソート
-        item.Sort((a,b) => a.GetID() - b.GetID());
+        item.Sort((a, b) => a.GetID() - b.GetID());
+
+        Weapon.Clear();
+        Armor.Clear();
+        Consumable.Clear();
+        Quest.Clear();
+        Field.Clear();
 
         //アイテムをカテゴリごとにソート
         foreach (ItemStatus it in item)
@@ -99,13 +103,13 @@ public class ItemDirectory : MonoBehaviour
             switch (it.GetItemType())
             {
                 case ItemStatus.ItemType.Weapon: Weapon.Add(it); break;
-                case ItemStatus.ItemType.Armor: Armor.Add(it);  break;
+                case ItemStatus.ItemType.Armor: Armor.Add(it); break;
                 case ItemStatus.ItemType.Consumable: Consumable.Add(it); break;
                 case ItemStatus.ItemType.Quest: Quest.Add(it); break;
                 case ItemStatus.ItemType.Field: Field.Add(it); break;
             }
         }
-        
+
         //-------------------------------------------------
 
         //武器をステータスごとに降順ソート
@@ -225,5 +229,9 @@ public class ItemDirectory : MonoBehaviour
                 case ItemStatus.SubItemType.Leg: LegWeight.Add(ar); break;
             }
         }
+    }
+
+    public List<ItemStatus> GetItemList(){
+        return item;
     }
 }

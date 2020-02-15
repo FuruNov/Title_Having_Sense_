@@ -9,7 +9,7 @@ public class ItemListDisplay : MonoBehaviour
     [SerializeField] private GameObject[]    Gameobject = new GameObject[5];
     [SerializeField] private Player          player;
     [SerializeField] private RectTransform[] ItemRect   = new RectTransform[5];
-    [SerializeField] Having_Itemlist itemList;
+    [SerializeField] HavingItemList itemList;
 
     // Start is called before the first frame update
     void Start() 
