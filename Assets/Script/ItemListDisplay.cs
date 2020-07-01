@@ -5,22 +5,22 @@ using UnityEngine.UI;
 
 public class ItemListDisplay : MonoBehaviour
 {
-    [SerializeField] private Image[]         Itemimage  = new Image[5];
-    [SerializeField] private GameObject[]    Gameobject = new GameObject[5];
-    [SerializeField] private Player          player;
-    [SerializeField] private RectTransform[] ItemRect   = new RectTransform[5];
+    [SerializeField] private Image[] itemimage = new Image[5];
+    [SerializeField] private GameObject[] Gameobject = new GameObject[5];
+    [SerializeField] private Player player;
+    [SerializeField] private RectTransform[] ItemRect = new RectTransform[5];
     [SerializeField] HavingItemList itemList;
 
     // Start is called before the first frame update
-    void Start() 
+    void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void Move_select()
@@ -28,7 +28,7 @@ public class ItemListDisplay : MonoBehaviour
 
     }
 
-    void Useitem_dicide()
+    void Useitem_decide()
     {
 
     }

@@ -17,20 +17,20 @@ public class LineGrid : MonoBehaviour
         for (int x = 0; x <= division.x; x++)
         {
             GL.Begin(GL.LINES);
-            for (int y = 0; y < division.y; y++)
+            for (int z = 0; z < division.y; z++)
             {
-                GL.Vertex(new Vector3(x * stepSize.x - halfScale.x, y * stepSize.y - halfScale.y, 0f));
-                GL.Vertex(new Vector3(x * stepSize.x - halfScale.x, (y + 1) * stepSize.y - halfScale.y, 0f));
+                GL.Vertex(new Vector3(x * stepSize.x - halfScale.x, 0f, z * stepSize.y - halfScale.y));
+                GL.Vertex(new Vector3(x * stepSize.x - halfScale.x, 0f, (z + 1) * stepSize.y - halfScale.y));
             }
             GL.End();
         }
-        for (int y = 0; y <= division.y; y++)
+        for (int z = 0; z <= division.y; z++)
         {
             GL.Begin(GL.LINES);
             for (int x = 0; x < division.x; x++)
             {
-                GL.Vertex(new Vector3(x * stepSize.x - halfScale.x, y * stepSize.y - halfScale.y, 0f));
-                GL.Vertex(new Vector3((x + 1) * stepSize.x - halfScale.x, y * stepSize.y - halfScale.y, 0f));
+                GL.Vertex(new Vector3(x * stepSize.x - halfScale.x, 0f, z * stepSize.y - halfScale.y));
+                GL.Vertex(new Vector3((x + 1) * stepSize.x - halfScale.x, 0f, z * stepSize.y - halfScale.y));
             }
             GL.End();
         }

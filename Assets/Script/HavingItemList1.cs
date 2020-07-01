@@ -10,20 +10,21 @@ public class HavingItemList : MonoBehaviour
     [SerializeField] private List<ItemStatus> HavingItem; //所持しているアイテムのリスト
 
     // Start is called before the first frame update
-    void Start() { foreach ( ItemStatus i in itemDirectory.GetItemList() ) { NumberOfItem[i.GetItemName()] = 0;  } }
+    void Start() { foreach (ItemStatus i in itemDirectory.GetItemList()) { NumberOfItem[i.GetItemName()] = 0; } }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void SortHavingList()
     {
         HavingItem.Clear();
-        foreach (ItemStatus i in itemDirectory.GetItemList()) 
-        { 
-            if(NumberOfItem[i.GetItemName()] != 0) { HavingItem.Add(i); }
+        foreach (ItemStatus i in itemDirectory.GetItemList())
+        {
+            if (NumberOfItem[i.GetItemName()] != 0) { HavingItem.Add(i); }
         }
     }
+
 }

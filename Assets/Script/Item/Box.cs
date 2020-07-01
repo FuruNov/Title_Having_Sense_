@@ -4,18 +4,8 @@ using UnityEngine;
 
 public class Box : MonoBehaviour
 {
-    private float distance_every_grid = 0.813f;
+    [SerializeField] private float distance_every_grid = 0.808f;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     void OnTriggerEnter2D(Collider2D other)
     {

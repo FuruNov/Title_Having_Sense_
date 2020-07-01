@@ -231,7 +231,8 @@ public class ItemDirectory : MonoBehaviour
         }
     }
 
-    public List<ItemStatus> GetItemList(){
+    public List<ItemStatus> GetItemList()
+    {
         return item;
     }
 }

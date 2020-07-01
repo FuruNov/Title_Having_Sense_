@@ -5,24 +5,24 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     [SerializeField] GameObject InstantiateGameObject;
-    
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.gameObject.tag == "Player_find_direction_effect")
+        if (other.gameObject.tag == "Player_find_direction_effect")
         {
-            Instantiate(InstantiateGameObject,transform.position,Quaternion.identity);
+            Instantiate(InstantiateGameObject, transform.position, Quaternion.identity);
             Destroy(other);
             Destroy(this.gameObject);
         }
