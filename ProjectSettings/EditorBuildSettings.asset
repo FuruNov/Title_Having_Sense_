@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Title_Scene.unity
     guid: 91d7445fee285fe43b138245f78ea6e0
+  - enabled: 1
+    path: Assets/Scenes/Clear_Scene.unity
+    guid: b0426dd7ffb86814cb048fc1a870844f
+  - enabled: 1
+    path: Assets/Scenes/Mystery_Scene2.unity
+    guid: 65be62d473f359c4292cc5bc71ef68ff
   m_configObjects: {}
